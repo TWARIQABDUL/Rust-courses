@@ -9,7 +9,7 @@ fn main() {
 
     let n1:u32 = n1.trim().parse().expect("not a number");
     let n2:u32 = n2.trim().parse().expect("not a number");
-
+    print!("the value of pi = {}",PI);
     // add 
     let add = n1 + n2;
     print!("{} + {} = {}",n1,n2,add);
