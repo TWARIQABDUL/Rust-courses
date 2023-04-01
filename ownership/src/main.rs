@@ -1,12 +1,19 @@
+use std::io;
 fn main() {
     let mut s = String::from("hello");
-    let r1 = &s;
-    let r2 = &s;
-    println!("r1 {} r2 {} ",r1,r2);
+    let mut strng = String::new();
 
-    s.push_str("<im third line");
-    // some comment
-    let r3 = &mut s;
-    println!("r3 {} ",r3);
-
+    io::stdin()
+        .read_line(&mut strng)
+        .expect("something is wrong");
+    s.push_str(&strng);
+    println!("the new string formed is {}", &s);
+    let new_arr = &s.as_bytes();
+    for (i, &some) in new_arr.iter().enumerate() {
+        println!("the i is {} and the some is {} ", i, some);
+        if some == 32 {
+            println!("text before spaces is {}", &s[..i]);
+            break;
+        }
+    }
 }
