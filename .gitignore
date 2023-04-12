@@ -1,1 +1,2 @@
-target/
+#ignoring the target folder
+/target
