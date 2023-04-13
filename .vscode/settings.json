@@ -1,7 +1,8 @@
 {
     "rust-analyzer.linkedProjects": [
         ".\\modules_crates\\Cargo.toml",
-        ".\\modules\\Cargo.toml"
+        ".\\modules\\Cargo.toml",
+        ".\\common_collections\\Cargo.toml"
     ],
-    "rust-analyzer.showUnlinkedFileNotification": false
+    "rust-analyzer.showUnlinkedFileNotification": true
 }
