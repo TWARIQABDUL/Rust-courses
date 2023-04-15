@@ -1,31 +1,44 @@
-#[derive(Debug)]
-pub struct User{
-    pub uname:i32,
-    pub active: bool,
-    pub password:i32,
-    pub login_time:i32
+// creating a user struct to hold user name and password
+use std::collections::HashMap;
+pub struct User {
+    pub username: String,
+    pub password: String,
 }
-pub struct  Xxx;
+#[derive(Debug)]
+pub struct UserStatus {
+    pub active: bool,
+    pub login_time: i32,
+    pub name: String,
+}
+//return the user info
 
-impl User {
-    pub fn hell()->User{
-        User{
-            uname:32,
-            active:false,
-            login_time:1,
-            password:23
+impl UserStatus {
+    pub fn return_status(x_name: &String) -> UserStatus {
+        UserStatus {
+            active: true,
+            login_time: 1,
+            name: x_name.to_string(),
         }
     }
 }
-pub mod users{
-    
-    use std::collections::HashMap;
-    pub fn create_user()-> HashMap<i32, &'static str> {
-        let mut user = HashMap::new();
-        user.extend(vec![(1,"Twariq"),(2,"sami"),(3,"jack Ass")]);
-        user
-    }
-    fn login(use_name:String,pwd:String){
-        create_user();
-    }
+
+// creating hash map of user
+
+pub fn creat_user() -> HashMap<String, User> {
+    let mut users = HashMap::new();
+    users.insert(
+        String::from("Twariq"),
+        User {
+            username: String::from("Twariq"),
+            password: String::from("123456"),
+        },
+    );
+    users.insert(
+        String::from("sami"),
+        User {
+            username: String::from("sami"),
+            password: String::from("123456"),
+        },
+    );
+    users
 }

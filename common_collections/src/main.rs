@@ -1,17 +1,29 @@
-use std::io;
-
-use credentials_user::User;
 mod credentials_user;
-
-
+use std::io::{self, Write};
 fn main() {
-    println!("please login into the system");
-    let mut user_name = String::new();
-    let mut password = String::new();
-    println!("type user name");
-    io::stdin().read_line(&mut user_name).expect("something is wrong");
-    println!("type user password");
-    io::stdin().read_line(&mut password).expect("something is wrong");
-    let ff = User::hell();
-    println!("{}",ff.uname);
+    //creating the instance of Hash map
+    let users_list = credentials_user::creat_user();
+
+    println!("enter the user name");
+    io::stdout().flush().unwrap();
+    let mut uname = String::new();
+    io::stdin().read_line(&mut uname).expect("failed to read");
+    let uname = uname.trim();
+
+    println!("enter the password");
+    io::stdout().flush().unwrap();
+    let mut upwd = String::new();
+    io::stdin().read_line(&mut upwd).expect("failed to read");
+    let upwd = upwd.trim();
+
+    if let Some(userv) = users_list.get(uname) {
+        if userv.password == upwd {
+            println!(
+                "{:?}",
+                credentials_user::UserStatus::return_status(&uname.to_string())
+            );
+        }
+    } else {
+        println!("Incorrect username or password. Please try again.");
+    }
 }
